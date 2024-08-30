@@ -10,7 +10,7 @@
 <body>
     <main>
         <p>this is permamnet content that will not be adjusted by bluberry</p>
-        <div class="generated">{{ content }}</div>
+        <div class="blog-list">{{ content }}</div>
     </main>
 </body>
 </html>

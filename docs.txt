@@ -1,0 +1,111 @@
+{{ content }}  # injects evrything form index.md by default
+
+{{ [blog] }}  # injects every 
+
+
+functions I need:
+
+inject templates into other templates
+inject markdown into templates
+inject the 
+
+inject all of a directory's md files into a template
+
+
+
+
+
+
+
+
+typical md file header content
+
+---
+title: (optional)
+date: (optional) (not implimented)
+style: (optional) (not implimented)
+description: (optional) (not implimented)
+tags: (optional) (not implimented)
+image: (optional) (not implimented)
+---
+
+
+
+
+
+
+site layout demo
+
+base.blu (template)
+- index.blu (template)
+  - index.md (content)
+  - bloglist.blu (template)
+    - blog (directory)
+      - blogpost1.md (content)
+      - blogpost2.md (content)
+      - blogpost3.md (content)
+
+
+
+example of calling a template named bloglist.blu into a .blu file
+<div>
+    {{ template | bloglist }}
+</div>
+
+
+example of calling content named index.md into a .blu file
+<div>
+    {{ content | index }}
+</div>
+
+
+example of calling metadata from a content file named blog.md into a .blu file
+<div>
+    {{ meta | blog.md }}
+</div>
+
+
+example of calling metadata from a content file named blog.md into a .blu file
+<div>
+    {{ meta.title | blog.md }}
+</div>
+
+
+example of calling metadata from a content file named blog.md into a .blu file
+<div>
+    {{ meta.title | blog.md }}
+</div>
+
+
+example of a for loop of a directory
+<div>
+    {{ for i in blog }}
+        {{ meta.title | i }}
+    {{ end }}
+</div>
+
+
+example of the built in postlist feature
+gets metadata from each md file in the folder named blog
+<div>
+    {{ postlist.title .date .description | blog }}
+</div>
+
+the returned html is
+<div>
+    <div class="post-preview">
+        <h2 class="post-title">Post Title</h1>
+        <h4 class="post-date">08/23/2024</h1>
+        <p class="post-description">demo description</p>
+    </div>
+    <div class="post-preview">
+        <h2 class="post-title">Post Title</h1>
+        <h4 class="post-date">08/23/2024</h1>
+        <p class="post-description">demo description</p>
+    </div>
+    <div class="post-preview">
+        <h2 class="post-title">Post Title</h1>
+        <h4 class="post-date">08/23/2024</h1>
+        <p class="post-description">demo description</p>
+    </div>
+</div>
